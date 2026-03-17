@@ -1,0 +1,36 @@
+/* ==========================================================================
+   Table of Contents
+   ==========================================================================
+   1. Template Info
+   2. tailwind
+   3. Global
+   4. Section
+   5. aos
+   6. swiper
+   7. select2
+   8. odometer
+   9. magnific-popup
+   10. Fonts
+   ========================================================================== */
+
+
+/* 
+Template Name: Malfit - Gym, Yoga, Zumba and Meditation HTML Template;
+Author: ThemesWolf;
+Version: 1.0;
+Description: Malfit - Gym, Yoga, Zumba and Meditation HTML Template;
+Tags: HTML, CSS, JavaScript;
+*/
+
+@import "./tailwind";
+@import "./global";
+@import "./section";
+
+// Plugins
+@import "../assets/css/aos.css";
+@import "../assets/css/swiper.min.css";
+@import "../assets/css/select2.min.css";
+@import "../assets/css/odometer-min.css";
+@import "../assets/css/magnific-popup.css";
+@import "../assets/fonts/fontsstylesheet.css";
+@import "./homepage";

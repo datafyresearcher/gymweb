@@ -1,0 +1,711 @@
+.edgefit-home {
+  background:
+    radial-gradient(circle at top left, rgba(240, 102, 39, 0.16), transparent 26%),
+    radial-gradient(circle at 85% 18%, rgba(221, 255, 95, 0.12), transparent 20%),
+    linear-gradient(180deg, #080808 0%, #0f120f 42%, #090909 100%);
+  color: #f7f2e8;
+  font-family: "Poppins", serif;
+  margin: 0;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .edge-shell {
+    width: min(1280px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+}
+
+.edge-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 22px 0 0;
+}
+
+.edge-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(11, 11, 11, 0.72);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+}
+
+.edge-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: #fff;
+}
+
+.edge-brand__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #dfff5f 0%, #f06627 100%);
+  color: #0a0a0a;
+  font-family: "Oswald", serif;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.edge-brand__text {
+  font-family: "Oswald", serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.edge-nav__panel {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 26px;
+  flex: 1 1 auto;
+
+  a {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.95rem;
+    transition: color 0.25s ease;
+  }
+
+  a:hover {
+    color: #dfff5f;
+  }
+}
+
+.edge-nav__toggle {
+  display: none;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+
+  span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    margin: 4px auto;
+    background: #fff;
+  }
+}
+
+.edge-btn,
+.edge-text-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.edge-btn {
+  padding: 15px 26px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #dfff5f 0%, #f06627 100%);
+  color: #111;
+  font-weight: 700;
+  box-shadow: 0 18px 40px rgba(240, 102, 39, 0.22);
+}
+
+.edge-btn:hover {
+  transform: translateY(-2px);
+}
+
+.edge-btn--ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #fff;
+  box-shadow: none;
+}
+
+.edge-text-link {
+  color: #fff;
+  font-weight: 600;
+}
+
+.edge-kicker {
+  display: inline-flex;
+  padding: 8px 14px;
+  margin-bottom: 22px;
+  border: 1px solid rgba(223, 255, 95, 0.18);
+  border-radius: 999px;
+  background: rgba(223, 255, 95, 0.08);
+  color: #dfff5f;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.edge-hero {
+  position: relative;
+  padding: 92px 0 72px;
+}
+
+.edge-hero::before {
+  position: absolute;
+  inset: 80px auto auto 52%;
+  width: min(520px, 42vw);
+  height: min(520px, 42vw);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(240, 102, 39, 0.14), transparent 62%);
+  content: "";
+  filter: blur(12px);
+}
+
+.edge-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 560px);
+  align-items: center;
+  gap: 44px;
+  min-height: calc(100vh - 150px);
+}
+
+.edge-hero__copy h1,
+.edge-story__intro h2,
+.edge-heading h2,
+.edge-pricing__copy h2,
+.edge-cta h2 {
+  margin: 0;
+  font-family: "Oswald", serif;
+  line-height: 0.94;
+  text-transform: uppercase;
+}
+
+.edge-hero__copy h1 {
+  max-width: 10ch;
+  font-size: clamp(4rem, 7.2vw, 7.4rem);
+}
+
+.edge-hero__copy h1 span {
+  color: #dfff5f;
+}
+
+.edge-hero__copy p,
+.edge-story__intro p,
+.edge-panel p,
+.edge-program p,
+.edge-pricing__copy p,
+.edge-price p,
+.edge-footer p {
+  color: rgba(247, 242, 232, 0.72);
+  line-height: 1.8;
+}
+
+.edge-hero__copy p {
+  max-width: 620px;
+  margin-top: 24px;
+  font-size: 1.06rem;
+}
+
+.edge-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 34px;
+}
+
+.edge-proof {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 44px;
+}
+
+.edge-proof article,
+.edge-panel,
+.edge-program,
+.edge-quote,
+.edge-price {
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.18);
+}
+
+.edge-proof strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #dfff5f;
+  font-family: "Oswald", serif;
+  font-size: 2rem;
+}
+
+.edge-proof span {
+  color: rgba(247, 242, 232, 0.68);
+  font-size: 0.94rem;
+}
+
+.edge-hero__visual {
+  position: relative;
+  min-height: 720px;
+}
+
+.edge-stage {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 36px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.32);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.edge-stage--primary {
+  position: absolute;
+  inset: 0 0 90px 70px;
+}
+
+.edge-stage--secondary {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 46%;
+  height: 260px;
+}
+
+.edge-float {
+  position: absolute;
+  right: 0;
+  top: 34px;
+  max-width: 250px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+  background: rgba(13, 14, 13, 0.8);
+  backdrop-filter: blur(12px);
+
+  span {
+    display: block;
+    margin-bottom: 10px;
+    color: #f06627;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  strong {
+    font-size: 1.02rem;
+    line-height: 1.6;
+  }
+}
+
+.edge-banner {
+  overflow: hidden;
+  padding: 18px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.edge-banner__track {
+  display: flex;
+  gap: 44px;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.86);
+  font-family: "Oswald", serif;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  text-transform: uppercase;
+  animation: edgeTicker 22s linear infinite;
+}
+
+.edge-banner__track span::after {
+  content: "•";
+  margin-left: 44px;
+  color: #f06627;
+}
+
+@keyframes edgeTicker {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-40%);
+  }
+}
+
+.edge-section,
+.edge-footer {
+  padding: 110px 0;
+}
+
+.edge-story {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.edge-story__intro h2,
+.edge-heading h2,
+.edge-pricing__copy h2,
+.edge-cta h2 {
+  font-size: clamp(2.5rem, 4vw, 4.9rem);
+  margin-bottom: 22px;
+}
+
+.edge-story__cards,
+.edge-coaches,
+.edge-pricing__cards {
+  display: grid;
+  gap: 24px;
+}
+
+.edge-story__cards {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.edge-panel span,
+.edge-program span,
+.edge-price span {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: #f06627;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.edge-panel h3,
+.edge-program h3,
+.edge-price strong,
+.edge-coach h3 {
+  margin: 0 0 10px;
+  font-family: "Oswald", serif;
+  text-transform: uppercase;
+}
+
+.edge-panel h3 {
+  font-size: 1.7rem;
+}
+
+.edge-heading {
+  max-width: 760px;
+  margin-bottom: 44px;
+}
+
+.edge-programs {
+  display: grid;
+  grid-template-columns: 1.2fr repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.edge-program--feature {
+  overflow: hidden;
+  padding: 0;
+
+  img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  div {
+    padding: 24px;
+  }
+}
+
+.edge-section--gallery {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+}
+
+.edge-gallery {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr 0.9fr;
+  grid-template-rows: 260px 260px;
+  gap: 22px;
+
+  figure {
+    overflow: hidden;
+    margin: 0;
+    border-radius: 28px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  figure:hover img {
+    transform: scale(1.05);
+  }
+}
+
+.edge-gallery__tall {
+  grid-row: span 2;
+}
+
+.edge-gallery__wide {
+  grid-column: span 2;
+}
+
+.edge-coaches {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.edge-coach {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.04);
+
+  img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+  }
+
+  div {
+    padding: 24px;
+  }
+
+  p {
+    color: #dfff5f;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}
+
+.edge-quotes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.edge-quote p {
+  margin: 0 0 16px;
+  color: rgba(247, 242, 232, 0.88);
+  font-size: 1.14rem;
+  line-height: 1.9;
+}
+
+.edge-quote span {
+  color: #dfff5f;
+  font-size: 0.92rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.edge-pricing {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 30px;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 36px;
+  background: linear-gradient(135deg, rgba(240, 102, 39, 0.1), rgba(255, 255, 255, 0.03));
+}
+
+.edge-pricing__cards {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.edge-price strong {
+  display: block;
+  font-size: 3rem;
+}
+
+.edge-price strong small {
+  margin-left: 4px;
+  color: rgba(247, 242, 232, 0.6);
+  font-size: 1rem;
+  font-family: "Poppins", serif;
+}
+
+.edge-price--featured {
+  background: linear-gradient(180deg, rgba(223, 255, 95, 0.16), rgba(255, 255, 255, 0.04));
+  transform: translateY(-12px);
+}
+
+.edge-section--cta {
+  padding-top: 0;
+}
+
+.edge-cta {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 30px;
+  align-items: center;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 36px;
+  background: linear-gradient(135deg, rgba(223, 255, 95, 0.08), rgba(255, 255, 255, 0.03));
+}
+
+.edge-cta h2 {
+  max-width: 12ch;
+}
+
+.edge-footer {
+  padding-top: 0;
+}
+
+.edge-footer__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.6fr 0.6fr;
+  gap: 30px;
+  padding-bottom: 34px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  h3 {
+    margin-bottom: 12px;
+    font-family: "Oswald", serif;
+    text-transform: uppercase;
+  }
+}
+
+.edge-footer__bottom {
+  padding-top: 22px;
+  color: rgba(247, 242, 232, 0.56);
+}
+
+@media only screen and (max-width: 991px) {
+  .edge-nav {
+    flex-wrap: wrap;
+    border-radius: 28px;
+  }
+
+  .edge-nav__toggle {
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  .edge-nav__panel {
+    display: none;
+    width: 100%;
+    flex: 0 0 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 18px;
+  }
+
+  .edge-nav__panel.is-open {
+    display: flex;
+  }
+
+  .edge-hero {
+    padding-top: 60px;
+  }
+
+  .edge-hero__grid,
+  .edge-story,
+  .edge-programs,
+  .edge-gallery,
+  .edge-coaches,
+  .edge-quotes,
+  .edge-pricing,
+  .edge-pricing__cards,
+  .edge-cta,
+  .edge-footer__grid,
+  .edge-proof,
+  .edge-story__cards {
+    grid-template-columns: 1fr;
+  }
+
+  .edge-hero__visual {
+    min-height: auto;
+    padding-bottom: 160px;
+  }
+
+  .edge-stage--primary,
+  .edge-stage--secondary,
+  .edge-float {
+    position: relative;
+    inset: auto;
+    width: 100%;
+  }
+
+  .edge-stage--primary {
+    height: 520px;
+    margin-bottom: 20px;
+  }
+
+  .edge-stage--secondary {
+    height: 260px;
+  }
+
+  .edge-float {
+    margin-top: 20px;
+    max-width: none;
+  }
+
+  .edge-gallery {
+    grid-template-rows: none;
+  }
+
+  .edge-gallery__tall,
+  .edge-gallery__wide {
+    grid-row: auto;
+    grid-column: auto;
+  }
+
+  .edge-gallery figure {
+    height: 280px;
+  }
+
+  .edge-price--featured {
+    transform: none;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .edgefit-home .edge-shell {
+    width: min(100% - 24px, 1280px);
+  }
+
+  .edge-header {
+    padding-top: 14px;
+  }
+
+  .edge-nav {
+    padding: 12px 14px;
+  }
+
+  .edge-brand__icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.7rem;
+    border-radius: 14px;
+  }
+
+  .edge-brand__text {
+    font-size: 0.98rem;
+    letter-spacing: 0.12em;
+  }
+
+  .edge-hero__copy h1 {
+    font-size: clamp(3rem, 16vw, 4.7rem);
+  }
+
+  .edge-section,
+  .edge-footer {
+    padding: 84px 0;
+  }
+
+  .edge-pricing,
+  .edge-cta {
+    padding: 26px;
+  }
+}

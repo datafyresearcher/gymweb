@@ -1,0 +1,239 @@
+/* 
+Template Name: Malfit - Gym, Yoga, Zumba and Meditation HTML Template;
+Author: ThemesWolf;
+Version: 1.0;
+Description: Malfit - Gym, Yoga, Zumba and Meditation HTML Template;
+Tags: HTML, CSS, JavaScript;
+*/
+
+
+
+$primary: #AEFF0D;
+$secondary1: #E8E8E8;
+$nt-10: #fff;
+$nt-30: #000;
+
+// // Scrollbar Starts
+// ::-webkit-scrollbar {
+// 	width: 6px;
+// }
+
+// ::-webkit-scrollbar-track {
+// 	background-color: $primary;
+// 	-webkit-border-radius: 80px;
+// 	border-radius: 80px;
+// }
+
+// ::-webkit-scrollbar-thumb {
+// 	-webkit-border-radius: 80px;
+// 	border-radius: 80px;
+// 	background: $secondary1;
+// }
+
+// // Scrollbar Ends
+
+section,
+footer {
+	overflow: hidden;
+	overflow-x: hidden;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+ul,
+ol {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+
+	li {
+		font-size: inherit;
+		font-weight: inherit;
+	}
+}
+
+button {
+	border: none;
+	cursor: pointer;
+	font-size: 18px;
+	line-height: 150%;
+	padding: 0;
+	background-color: transparent;
+}
+
+input,
+textarea {
+	padding: 12px 20px;
+	width: 100%;
+	outline-color: transparent;
+	font-size: 16px;
+	border-radius: 10px;
+	background-color: transparent;
+	border: 1px solid #B3B6B9;
+
+	&::placeholder {
+		color: #F5F5DC;
+		font-size: 16px;
+	}
+}
+
+.d-center {
+	@apply flex items-center justify-center;
+}
+
+.max-auto {
+	max-width: 100%;
+}
+
+.max-un {
+	max-width: unset;
+}
+
+.d-rtl {
+	direction: rtl;
+}
+
+.v-line {
+	&::before {
+		position: absolute;
+		content: '';
+		width: 1px;
+		height: 40px;
+		background-color: #222;
+	}
+
+	&.lg::before {
+		@apply w-0.5 h-[60px] lg:h-[60px] opacity-40
+	}
+
+	&.lgx::before {
+		@apply h-[173px] w-[1px] bg-[#B3B6B9] opacity-[0.3]
+	}
+
+	&.lg2::before {
+		height: 17px;
+		padding: 1px;
+		background-color: rgba(var(--s2), 1) !important;
+	}
+
+	&.xl::before {
+		background-color: rgb(var(--p7)) !important;
+		height: 15px;
+	}
+
+	&.sm::before {
+		height: 25px;
+	}
+
+	&.smx::before {
+		width: 1px;
+		height: 20px;
+		background: rgba(255, 255, 255, 0.20);
+	}
+
+	&.dashed::before {
+		border-right: 1px dashed rgb(var(--n5));
+		background: transparent;
+	}
+}
+
+iframe {
+	border: 0;
+	width: 100%;
+}
+
+
+// Tab Starts
+.nav-links {
+	&.active {
+		.tablink {
+			color: $nt-30 !important;
+			background-color: $primary !important;
+		}
+
+		span {
+			color: #fff !important;
+		}
+	}
+}
+
+
+.max-unset {
+	max-width: unset;
+}
+
+.accordion-single {
+	transition: 0.5s linear;
+
+	&.active {
+		transition: 0.5s linear;
+		// border-color: #99C306;
+		.accordion-btn {
+			// color: #99C306;
+			transition: 0.5s linear;
+		}
+
+		.arrowclickable {
+			transform: rotate(180deg);
+			transition: 0.5s linear;
+
+			.ph-plus-circle {
+				display: none;
+			}
+
+			.ph-minus-circle {
+				display: block;
+			}
+			i{
+				color: #000;
+			}
+		}
+	}
+
+	.arrowclickable {
+		transition: 0.5s linear;
+	}
+}
+
+.counters {
+	span {
+		line-height: inherit;
+		font-size: inherit !important;
+		font-weight: inherit !important;
+		color: inherit !important;
+	}
+}
+
+// Custom Tabs
+
+h1,
+h1>a,
+h2,
+h2>a,
+h3,
+h3>a,
+h4,
+h4>a,
+h5,
+h5>a,
+h6,
+h6>a {
+	span {
+		font-size: inherit;
+		font-family: inherit;
+		color: inherit;
+		line-height: inherit;
+		font-weight: inherit;
+	}
+}
+
+svg {
+	width: auto;
+	height: auto;
+	max-width: 90%;
+	max-height: 100%;
+	font-weight: 700;
+}
