@@ -9,7 +9,7 @@ const HtmlWebpackSimpleIncludePlugin = require("html-webpack-simple-include-plug
 const htmlFiles = [
   "index",
   "home-two",
-  "home-three",
+  "home",
   "home-four",
   "about",
   "services",
