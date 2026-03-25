@@ -2,12 +2,12 @@
   "redirects": [
     {
       "source": "/",
-      "destination": "/home-three.html",
+      "destination": "/home.html",
       "permanent": false
     },
     {
       "source": "/index.html",
-      "destination": "/home-three.html",
+      "destination": "/home.html",
       "permanent": false
     }
   ]
