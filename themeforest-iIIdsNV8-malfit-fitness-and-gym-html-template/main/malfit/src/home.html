@@ -1844,14 +1844,20 @@
         <div class="grid grid-cols-12 gap-6">
           <div class="col-span-12 lg:col-span-6">
             <div data-aos="fade-up-right" data-aos-duration="800">
-              <form>
+              <form data-bmi-form>
                 <div class="flex items-center gap-4 lg:gap-6 mb-4 lg:mb-6">
                   <input
-                    type="text"
+                    type="number"
+                    min="1"
+                    step="0.1"
+                    data-bmi-height
                     placeholder="Height / cm"
                     class="w-full p-3 bg-secondary1 text-nt40 placeholder:text-nt30 rounded-none border-nt30" />
                   <input
-                    type="text"
+                    type="number"
+                    min="1"
+                    step="0.1"
+                    data-bmi-weight
                     placeholder="Weight / kg"
                     class="w-full p-3 bg-secondary1 text-nt40 placeholder:text-nt30 rounded-none border-nt30" />
                 </div>
@@ -1916,9 +1922,9 @@
                   </tr>
                 </tbody>
               </table>
-              <div class="flex items-center gap-1">
+              <div class="flex items-center gap-1 flex-wrap">
                 <span class="text-nt10 font-semibold">BMI:</span>
-                <span class="text-nt20">Body Mass Index</span>
+                <span class="text-nt20" data-bmi-result>Body Mass Index</span>
               </div>
             </div>
           </div>

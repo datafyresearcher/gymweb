@@ -201,4 +201,42 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  document.querySelectorAll("[data-bmi-form]").forEach((form) => {
+    const heightInput = form.querySelector("[data-bmi-height]");
+    const weightInput = form.querySelector("[data-bmi-weight]");
+    const resultOutput = form
+      .closest(".grid")
+      ?.querySelector("[data-bmi-result]");
+
+    if (!heightInput || !weightInput || !resultOutput) {
+      return;
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const heightCm = Number.parseFloat(heightInput.value);
+      const weightKg = Number.parseFloat(weightInput.value);
+
+      if (!Number.isFinite(heightCm) || !Number.isFinite(weightKg) || heightCm <= 0 || weightKg <= 0) {
+        resultOutput.textContent = "Please enter valid height and weight.";
+        return;
+      }
+
+      const heightMeters = heightCm / 100;
+      const bmi = weightKg / (heightMeters * heightMeters);
+      let category = "Obese";
+
+      if (bmi < 18.5) {
+        category = "Underweight";
+      } else if (bmi < 25) {
+        category = "Normal weight";
+      } else if (bmi < 30) {
+        category = "Overweight";
+      }
+
+      resultOutput.textContent = `${bmi.toFixed(1)} (${category})`;
+    });
+  });
 });
