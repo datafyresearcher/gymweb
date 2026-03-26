@@ -311,4 +311,376 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  function initializeChatWidget() {
+    if (document.body?.dataset.chatWidgetReady === "true") {
+      return;
+    }
+
+    document.body.dataset.chatWidgetReady = "true";
+
+    const style = document.createElement("style");
+    style.textContent = `
+      .lr-chat-toggle {
+        position: fixed;
+        right: 22px;
+        bottom: 22px;
+        z-index: 1200;
+        width: 64px;
+        height: 64px;
+        border: 0;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #ff5b2e 0%, #ff8844 100%);
+        color: #111111;
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .lr-chat-toggle:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 22px 48px rgba(0, 0, 0, 0.32);
+      }
+
+      .lr-chat-panel {
+        position: fixed;
+        right: 22px;
+        bottom: 98px;
+        z-index: 1200;
+        width: min(380px, calc(100vw - 24px));
+        max-height: min(78vh, 720px);
+        border-radius: 24px;
+        overflow: hidden;
+        background: #171515;
+        color: #ffffff;
+        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.38);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        display: none;
+        flex-direction: column;
+      }
+
+      .lr-chat-panel.is-open {
+        display: flex;
+      }
+
+      .lr-chat-header {
+        padding: 18px 18px 14px;
+        background: linear-gradient(180deg, rgba(255, 91, 46, 0.18), rgba(23, 21, 21, 0.95));
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .lr-chat-header h3,
+      .lr-chat-header p {
+        margin: 0;
+      }
+
+      .lr-chat-header h3 {
+        font-size: 1.1rem;
+        line-height: 1.2;
+      }
+
+      .lr-chat-header p,
+      .lr-chat-chip,
+      .lr-chat-hint,
+      .lr-chat-status {
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .lr-chat-body {
+        padding: 16px;
+        overflow-y: auto;
+        background:
+          radial-gradient(circle at top right, rgba(255, 91, 46, 0.12), transparent 32%),
+          linear-gradient(180deg, #171515 0%, #101010 100%);
+        flex: 1;
+      }
+
+      .lr-chat-messages {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .lr-chat-message {
+        max-width: 86%;
+        padding: 12px 14px;
+        border-radius: 18px;
+        line-height: 1.5;
+        font-size: 0.96rem;
+        white-space: pre-wrap;
+      }
+
+      .lr-chat-message.user {
+        align-self: flex-end;
+        background: #ff5b2e;
+        color: #141414;
+        border-bottom-right-radius: 6px;
+      }
+
+      .lr-chat-message.assistant {
+        align-self: flex-start;
+        background: rgba(255, 255, 255, 0.08);
+        color: #ffffff;
+        border-bottom-left-radius: 6px;
+      }
+
+      .lr-chat-chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .lr-chat-chip {
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-size: 0.82rem;
+        cursor: pointer;
+      }
+
+      .lr-chat-footer {
+        padding: 14px 16px 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(15, 15, 15, 0.96);
+      }
+
+      .lr-chat-form {
+        display: grid;
+        gap: 10px;
+      }
+
+      .lr-chat-input {
+        resize: none;
+        min-height: 88px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.05);
+        color: #ffffff;
+        padding: 14px;
+        outline: none;
+      }
+
+      .lr-chat-input::placeholder {
+        color: rgba(255, 255, 255, 0.45);
+      }
+
+      .lr-chat-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .lr-chat-submit {
+        border: 0;
+        border-radius: 999px;
+        padding: 12px 18px;
+        background: #ff5b2e;
+        color: #131313;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .lr-chat-submit[disabled] {
+        opacity: 0.65;
+        cursor: not-allowed;
+      }
+
+      .lr-chat-status {
+        min-height: 20px;
+        font-size: 0.82rem;
+      }
+
+      @media (max-width: 640px) {
+        .lr-chat-toggle {
+          right: 14px;
+          bottom: 14px;
+          width: 58px;
+          height: 58px;
+        }
+
+        .lr-chat-panel {
+          right: 12px;
+          left: 12px;
+          bottom: 84px;
+          width: auto;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = `
+      <button type="button" class="lr-chat-toggle" aria-expanded="false" aria-controls="lr-chat-panel" aria-label="Open chat assistant">
+        <i class="ph-fill ph-chat-circle-dots" style="font-size: 1.7rem;"></i>
+      </button>
+      <section class="lr-chat-panel" id="lr-chat-panel" aria-label="Lifestyle Reset chat assistant">
+        <div class="lr-chat-header">
+          <h3>Lifestyle Reset Assistant</h3>
+          <p>Ask about memberships, classes, timings, trainers, location, or how to get started.</p>
+          <div class="lr-chat-chip-row">
+            <button type="button" class="lr-chat-chip" data-chat-prompt="What classes do you offer?">Classes</button>
+            <button type="button" class="lr-chat-chip" data-chat-prompt="Where are you located and how can I contact you?">Location</button>
+            <button type="button" class="lr-chat-chip" data-chat-prompt="How can I join Lifestyle Reset?">Join</button>
+          </div>
+        </div>
+        <div class="lr-chat-body">
+          <div class="lr-chat-messages" data-chat-messages></div>
+        </div>
+        <div class="lr-chat-footer">
+          <form class="lr-chat-form" data-chat-form>
+            <textarea
+              class="lr-chat-input"
+              name="message"
+              maxlength="800"
+              placeholder="Type your message here..."
+              required></textarea>
+            <div class="lr-chat-actions">
+              <span class="lr-chat-hint">Replies may take a few seconds.</span>
+              <button type="submit" class="lr-chat-submit" data-chat-submit>Send</button>
+            </div>
+            <div class="lr-chat-status" data-chat-status></div>
+          </form>
+        </div>
+      </section>
+    `;
+
+    document.body.appendChild(wrapper);
+
+    const toggleButton = wrapper.querySelector(".lr-chat-toggle");
+    const panel = wrapper.querySelector(".lr-chat-panel");
+    const messagesElement = wrapper.querySelector("[data-chat-messages]");
+    const form = wrapper.querySelector("[data-chat-form]");
+    const input = form?.querySelector(".lr-chat-input");
+    const submitButton = form?.querySelector("[data-chat-submit]");
+    const statusOutput = form?.querySelector("[data-chat-status]");
+    const promptButtons = wrapper.querySelectorAll("[data-chat-prompt]");
+
+    if (!toggleButton || !panel || !messagesElement || !form || !input || !submitButton || !statusOutput) {
+      return;
+    }
+
+    const conversation = [];
+
+    const appendMessage = (role, content) => {
+      const message = document.createElement("div");
+      message.className = `lr-chat-message ${role}`;
+      message.textContent = content;
+      messagesElement.appendChild(message);
+      messagesElement.scrollTop = messagesElement.scrollHeight;
+      panel.querySelector(".lr-chat-body")?.scrollTo({
+        top: messagesElement.scrollHeight,
+        behavior: "smooth",
+      });
+    };
+
+    const openPanel = () => {
+      panel.classList.add("is-open");
+      toggleButton.setAttribute("aria-expanded", "true");
+    };
+
+    const closePanel = () => {
+      panel.classList.remove("is-open");
+      toggleButton.setAttribute("aria-expanded", "false");
+    };
+
+    toggleButton.addEventListener("click", () => {
+      if (panel.classList.contains("is-open")) {
+        closePanel();
+      } else {
+        openPanel();
+        input.focus();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && panel.classList.contains("is-open")) {
+        closePanel();
+      }
+    });
+
+    const seedAssistantMessage =
+      "Hi, I’m the Lifestyle Reset assistant. I can help with classes, memberships, location, contact details, and joining guidance.";
+    appendMessage("assistant", seedAssistantMessage);
+    conversation.push({ role: "assistant", content: seedAssistantMessage });
+
+    const sendMessage = async (messageText) => {
+      const message = String(messageText || "").trim();
+      if (!message) {
+        return;
+      }
+
+      openPanel();
+      appendMessage("user", message);
+      conversation.push({ role: "user", content: message });
+
+      submitButton.disabled = true;
+      statusOutput.textContent = "Thinking...";
+
+      try {
+        const recentConversation = conversation.slice(-12);
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            message,
+            history: recentConversation,
+          }),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.message || "The assistant is unavailable right now.");
+        }
+
+        const reply = String(result.message || "").trim() || "I’m here to help. Please try asking that another way.";
+        appendMessage("assistant", reply);
+        conversation.push({ role: "assistant", content: reply });
+        statusOutput.textContent = "";
+      } catch (error) {
+        const fallbackMessage =
+          error instanceof Error ? error.message : "Something went wrong while contacting the assistant.";
+        statusOutput.textContent = fallbackMessage;
+      } finally {
+        submitButton.disabled = false;
+      }
+    };
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const value = input.value.trim();
+      if (!value) {
+        statusOutput.textContent = "Please enter a message first.";
+        return;
+      }
+
+      input.value = "";
+      await sendMessage(value);
+      input.focus();
+    });
+
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        form.requestSubmit();
+      }
+    });
+
+    promptButtons.forEach((button) => {
+      button.addEventListener("click", async () => {
+        const prompt = button.getAttribute("data-chat-prompt") || "";
+        await sendMessage(prompt);
+      });
+    });
+  }
+
+  initializeChatWidget();
 });
