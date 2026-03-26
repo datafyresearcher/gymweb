@@ -25,6 +25,10 @@ function getOutputText(response) {
   return textParts.join("\n").trim();
 }
 
+function supportsReasoning(model) {
+  return /^gpt-5/i.test(String(model || "").trim());
+}
+
 module.exports = async (req, res) => {
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Method not allowed." });
@@ -82,17 +86,22 @@ module.exports = async (req, res) => {
   ];
 
   try {
+    const requestBody = {
+      model,
+      input,
+    };
+
+    if (supportsReasoning(model)) {
+      requestBody.reasoning = { effort: "low" };
+    }
+
     const response = await fetch("https://api.openai.com/v1/responses", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${apiKey}`,
       },
-      body: JSON.stringify({
-        model,
-        reasoning: { effort: "low" },
-        input,
-      }),
+      body: JSON.stringify(requestBody),
     });
 
     const result = await response.json();
