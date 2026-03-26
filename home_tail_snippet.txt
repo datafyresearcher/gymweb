@@ -1,0 +1,312 @@
+    <!-- <========= Pricing Section Starts ============> -->
+    <section class="py-12 md:py-16 lg:py-20">
+      <div class="container">
+        <div class="mb-8 sm:mb-10 lg:mb-[60px] text-center">
+          <span class="mb-4 text-nt20">OUR PLAN</span>
+          <h1 class="font-Oswald text-nt10">Choose Your Plan</h1>
+        </div>
+        <div class="grid grid-cols-12 gap-6">
+          <div class="col-span-12 md:col-span-6 lg:col-span-4">
+            <div class="border border-primary py-6 md:py-8 lg:py-10 xl:py-12 px-4 lg:px-6 xl:px-9 rounded-xl">
+              <h4 class="text-nt10 mb-3 md:mb-4 font-Oswald">Basic Plan</h4>
+              <div class="flex items-end gap-2 mb-3 md:mb-4">
+                <span class="fs-one text-nt10">10,000</span>
+                <span class="font-medium text-nt20 mb-2">Per month</span>
+              </div>
+              <p class="text-nt20 lg:text-lg mb-4 lg:mb-6">
+                10,000 PKR per month for full gym access.
+              </p>
+              <a href="contact.html" class="p-3 text-center w-full block border border-primary text-primary rounded-lg font-medium mb-6 md:mb-7 lg:mb-9">
+                Get Started
+              </a>
+              <span class="w-full h-[1px] bg-nt30 mb-4 lg:mb-6"></span>
+              <h4 class="md:text-lg text-nt10 font-medium mb-4 lg:mb-6">Features</h4>
+              <ul class="space-y-3 text-nt20">
+                <li><i class="ph ph-check-square mr-2 text-nt10"></i>Basic package: 10,000 PKR</li>
+                <li><i class="ph ph-check-square mr-2 text-nt10"></i>Simple monthly gym membership</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-span-12 md:col-span-6 lg:col-span-4">
+            <div class="border border-primary py-6 md:py-8 lg:py-10 xl:py-12 px-4 lg:px-6 xl:px-9 rounded-xl">
+              <div class="flex items-center justify-between gap-4 mb-3 md:mb-4">
+                <h4 class="text-nt10 font-Oswald">Standard Plan</h4>
+                <span class="bg-primary text-nt30 rounded-full px-4 py-2 font-semibold uppercase text-sm">Most Popular</span>
+              </div>
+              <div class="flex items-end gap-2 mb-3 md:mb-4">
+                <span class="fs-one text-nt10">14K</span>
+                <span class="font-medium text-nt20 mb-2">Per month</span>
+              </div>
+              <p class="text-nt20 lg:text-lg mb-4 lg:mb-6">
+                Flexible couple and individual membership options.
+              </p>
+              <a href="contact.html" class="p-3 text-center w-full block bg-primary text-nt30 rounded-lg font-medium mb-6 md:mb-7 lg:mb-9">
+                Get Started
+              </a>
+              <span class="w-full h-[1px] bg-nt30 mb-4 lg:mb-6"></span>
+              <h4 class="md:text-lg text-nt10 font-medium mb-4 lg:mb-6">Features</h4>
+              <ul class="space-y-3 text-nt20">
+                <li><i class="ph ph-check-square mr-2 text-nt10"></i>Discounted plan for couple: 14K</li>
+                <li><i class="ph ph-check-square mr-2 text-nt10"></i>Basic: 7K</li>
+                <li><i class="ph ph-check-square mr-2 text-nt10"></i>Premium: 30K</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-span-12 md:col-span-6 lg:col-span-4">
+            <div class="border border-primary py-6 md:py-8 lg:py-10 xl:py-12 px-4 lg:px-6 xl:px-9 rounded-xl">
+              <h4 class="text-nt10 mb-3 md:mb-4 font-Oswald">Premium Plan</h4>
+              <div class="flex items-end gap-2 mb-3 md:mb-4">
+                <span class="fs-one text-nt10">25K</span>
+                <span class="font-medium text-nt20 mb-2">Per month</span>
+              </div>
+              <p class="text-nt20 lg:text-lg mb-4 lg:mb-6">
+                Premium options with added personal choice flexibility.
+              </p>
+              <a href="contact.html" class="p-3 text-center w-full block border border-primary text-primary rounded-lg font-medium mb-6 md:mb-7 lg:mb-9">
+                Get Started
+              </a>
+              <span class="w-full h-[1px] bg-nt30 mb-4 lg:mb-6"></span>
+              <h4 class="md:text-lg text-nt10 font-medium mb-4 lg:mb-6">Features</h4>
+              <ul class="space-y-3 text-nt20">
+                <li><i class="ph ph-check-square mr-2 text-nt10"></i>Basic: 10K</li>
+                <li><i class="ph ph-check-square mr-2 text-nt10"></i>Personal choice: 25K</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- <========= Pricing Section Ends ============> -->
+    <!-- <========= BMI Section Starts ============> -->
+    <section class="py-12 md:py-16 lg:py-20">
+      <div class="container">
+        <div class="text-center mb-10 lg:mb-[60px]">
+          <h1 class="font-Oswald text-nt10 mb-4">Know Your Fitness Level</h1>
+          <p class="text-nt20 lg:text-lg">Calculate your Body Mass Index (BMI) to track your health goals</p>
+        </div>
+        <div class="grid grid-cols-12 gap-6 items-start">
+          <div class="col-span-12 lg:col-span-6">
+            <form data-bmi-form class="grid grid-cols-12 gap-4">
+              <div class="col-span-12 sm:col-span-6">
+                <input type="number" step="0.1" placeholder="Height / cm" data-bmi-height class="w-full bg-secondary1 text-nt40 placeholder:text-nt30 px-4 py-4 border border-nt30" />
+              </div>
+              <div class="col-span-12 sm:col-span-6">
+                <input type="number" step="0.1" placeholder="Weight / kg" data-bmi-weight class="w-full bg-secondary1 text-nt40 placeholder:text-nt30 px-4 py-4 border border-nt30" />
+              </div>
+              <div class="col-span-12 sm:col-span-6">
+                <select class="w-full bg-secondary1 text-nt30 px-4 py-4 border border-nt30">
+                  <option>Select Gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+              </div>
+              <div class="col-span-12 sm:col-span-6">
+                <input type="number" placeholder="Age" class="w-full bg-secondary1 text-nt40 placeholder:text-nt30 px-4 py-4 border border-nt30" />
+              </div>
+              <div class="col-span-12">
+                <select class="w-full bg-secondary1 text-nt30 px-4 py-4 border border-nt30">
+                  <option>Select an activity level:</option>
+                  <option>Beginner</option>
+                  <option>Intermediate</option>
+                  <option>Advanced</option>
+                </select>
+              </div>
+              <div class="col-span-12 pt-2">
+                <button type="submit" class="btnextra z-10 font-medium btn-13 py-3 px-6 !text-nt30">Calculate BMI</button>
+              </div>
+            </form>
+          </div>
+          <div class="col-span-12 lg:col-span-6">
+            <table class="w-full border border-nt30 text-center">
+              <thead class="bg-secondary1">
+                <tr>
+                  <th class="text-nt10 font-Oswald py-4 border border-nt30">BMI</th>
+                  <th class="text-nt10 font-Oswald py-4 border border-nt30">Weight Category</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white text-nt30">
+                <tr><td class="py-4 border border-nt30 font-Oswald">Under 18.5</td><td class="py-4 border border-nt30 font-Oswald">Underweight</td></tr>
+                <tr><td class="py-4 border border-nt30 font-Oswald">25 - 29.9</td><td class="py-4 border border-nt30 font-Oswald">Normal weight</td></tr>
+                <tr><td class="py-4 border border-nt30 font-Oswald">25 - 29.9</td><td class="py-4 border border-nt30 font-Oswald">Overweight</td></tr>
+                <tr><td class="py-4 border border-nt30 font-Oswald">30 - 34.9</td><td class="py-4 border border-nt30 font-Oswald">Obese</td></tr>
+              </tbody>
+            </table>
+            <p class="text-nt20 mt-4"><span class="text-nt10 font-semibold">BMI:</span> <span data-bmi-result>Body Mass Index</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- <========= BMI Section Ends ============> -->
+    <!-- <========= Routine Section Starts ============> -->
+    <section class="py-12 md:py-16 lg:py-20">
+      <div class="container">
+        <div class="text-center mb-10 lg:mb-[60px]">
+          <h1 class="font-Oswald text-nt10 mb-4">Plan Your Fitness Journey</h1>
+          <p class="text-nt20 lg:text-lg">
+            Explore our weekly schedule and find the
+            <br class="hidden sm:block" />
+            perfect class for your goals
+          </p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-3 mb-8 lg:mb-10">
+          <button class="bg-primary text-nt30 px-5 py-3">All Fitness Program</button>
+          <button class="bg-white text-nt30 px-5 py-3">Strength Training</button>
+          <button class="bg-white text-nt30 px-5 py-3">Yoga Classes</button>
+          <button class="bg-white text-nt30 px-5 py-3">CrossFit</button>
+          <button class="bg-white text-nt30 px-5 py-3">Pilates</button>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[900px] border border-nt30 text-center">
+            <thead class="bg-secondary1">
+              <tr>
+                <th class="text-nt10 font-Oswald py-4 border border-nt30">Monday</th>
+                <th class="text-nt10 font-Oswald py-4 border border-nt30">Tuesday</th>
+                <th class="text-nt10 font-Oswald py-4 border border-nt30">Wednesday</th>
+                <th class="text-nt10 font-Oswald py-4 border border-nt30">Thursday</th>
+                <th class="text-nt10 font-Oswald py-4 border border-nt30">Friday</th>
+                <th class="text-nt10 font-Oswald py-4 border border-nt30">Saturday</th>
+                <th class="text-nt10 font-Oswald py-4 border border-nt30">Sunday</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white text-nt30 font-Oswald">
+              <tr><td class="py-4 border border-nt30">Yoga</td><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30">Pilates</td><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30">Cardio</td><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30">CrossFit</td></tr>
+              <tr><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30">Cardio</td><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30">Yoga</td><td class="py-4 border border-nt30">Pilates</td><td class="py-4 border border-nt30"></td></tr>
+              <tr><td class="py-4 border border-nt30">CrossFit</td><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30">Yoga</td><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30">Yoga</td><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30">Yoga</td></tr>
+              <tr><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30">Pilates</td><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30">Strength</td><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30">Yoga</td><td class="py-4 border border-nt30"></td></tr>
+              <tr><td class="py-4 border border-nt30">Pilates</td><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30">CrossFit</td><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30">Cardio</td><td class="py-4 border border-nt30"></td></tr>
+              <tr><td class="py-4 border border-nt30">Yoga</td><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30">Cardio</td><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30">Pilates</td></tr>
+              <tr><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30">Yoga</td><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30">CrossFit</td><td class="py-4 border border-nt30"></td><td class="py-4 border border-nt30">Yoga</td><td class="py-4 border border-nt30"></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <!-- <========= Routine Section Ends ============> -->
+    <!-- <========= Spicial section Starts ============> -->
+    <section>
+      <div class="container">
+        <div class="spicialsection relative pt-10">
+          <div class="spicialsection__thumb max-lg:hidden">
+            <img src="assets/images/spicialsection-two.png" alt="Spicialsection" />
+          </div>
+          <div class="spicialsection__content lg:absolute lg:top-1/4 lg:left-0">
+            <div class="grid grid-cols-12 gap-6">
+              <div class="col-span-10 md:col-span-5 col-start-2 md:col-start-2">
+                <div class="max-lg:py-10">
+                  <h1 class="text-nt10 font-Oswald display-4 mb-4 md:mb-5">
+                    Welcome to Your New Fitness Family
+                  </h1>
+                  <p class="text-nt20 mb-4 lg:mb-8">
+                    Whether you're just starting out or leveling up, we've got your back
+                    - every rep of the way.
+                  </p>
+                  <div class="flex">
+                    <a href="contact.html" class="btnextra z-10 font-medium btn-13 py-2 lg:py-3 px-4 sm:px-5 !text-nt30 max-lg:ml-4 lg:mr-4">Contact Us</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- <========= Spicial section Ends ============> -->
+    <!-- <========= Footer Section Starts ============> -->
+    <footer class="pt-12 md:pt-16 lg:pt-20">
+      <div class="container">
+        <div class="grid grid-cols-12 gap-10 pb-10 lg:pb-[60px] border-b border-nt20 border-opacity-50">
+          <div class="col-span-12 sm:col-span-10 lg:col-span-4">
+            <h2 class="text-primary font-Oswald mb-4 lg:mb-6">LIFESTYLE RESET</h2>
+            <p class="text-nt20 font-medium fs-five">
+              "Lifestyle Reset Gym is where focus, strength, and transformation come
+              together to build your best self."
+            </p>
+          </div>
+          <div class="col-span-12 sm:col-span-4 lg:col-span-2">
+            <span class="fs-five font-semibold text-nt10 uppercase mb-4 md:mb-6">Quick Links</span>
+            <ul>
+              <li class="mb-2"><a href="home.html" class="text-nt10 font-medium">Home</a></li>
+              <li class="mb-2"><a href="about.html" class="text-nt10 font-medium">About Us</a></li>
+              <li class="mb-2"><a href="ourclass.html" class="text-nt10 font-medium">Classes</a></li>
+              <li class="mb-2"><a href="services.html" class="text-nt10 font-medium">Membership Plans</a></li>
+              <li class="mb-2"><a href="blogs-details.html" class="text-nt10 font-medium">Blog</a></li>
+              <li><a href="contact.html" class="text-nt10 font-medium">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="col-span-12 sm:col-span-4 lg:col-span-3">
+            <span class="fs-five font-semibold text-nt10 uppercase mb-4 md:mb-6">Explore Our Programs</span>
+            <ul>
+              <li class="mb-2"><a href="home.html" class="text-nt10 font-medium">GYM</a></li>
+              <li class="mb-2"><a href="trainers-details.html" class="text-nt10 font-medium">Strength</a></li>
+              <li class="mb-2"><a href="services.html" class="text-nt10 font-medium">HIIT Class</a></li>
+              <li class="mb-2"><a href="services.html" class="text-nt10 font-medium">Crossfit</a></li>
+              <li><a href="services.html" class="text-nt10 font-medium">Nutrition Coaching</a></li>
+            </ul>
+          </div>
+          <div class="col-span-12 sm:col-span-4 lg:col-span-3">
+            <span class="fs-five font-semibold text-nt10 uppercase mb-4 md:mb-6">CONTACT INFO</span>
+            <div class="flex items-center gap-2 md:gap-3 mb-3 md:mb-5">
+              <span><i class="ph ph-map-pin-line max-md:text-3xl fs-two text-primary"></i></span>
+              <div>
+                <span class="text-nt20">Address:</span>
+                <span class="text-nt10">LDA Ave, Raiwind Road, Lahore, Pakistan</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 md:gap-3 mb-3 md:mb-5">
+              <span><i class="ph ph-phone-call max-md:text-3xl fs-two text-primary"></i></span>
+              <div>
+                <span class="text-nt20">Phone:</span>
+                <a href="tel:03234222747" class="text-nt10">0323-4222747</a>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 md:gap-3 mb-3 md:mb-5">
+              <span><i class="ph ph-envelope max-md:text-3xl fs-two text-primary"></i></span>
+              <div>
+                <span class="text-nt20">Email:</span>
+                <a href="mailto:gym@lifestylereset.com.pk" class="text-nt10">gym@lifestylereset.com.pk</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-12 justify-between items-center gap-6 md:gap-8 lg:gap-10 pt-8 lg:pt-10 pb-10 lg:pb-[60px] border-b border-nt20 border-opacity-50">
+          <div class="col-span-12 md:col-span-6 lg:col-span-4">
+            <h3 class="text-primary font-Oswald mb-3 md:mb-4">Newsletter Signup:</h3>
+            <p class="text-nt20">Subscribe to our newsletter for exclusive updates and fitness tips</p>
+          </div>
+          <div class="col-span-12 sm:col-span-8 md:col-span-6 lg:col-span-5 xl:col-span-4 xl:col-start-6">
+            <form>
+              <div class="flex items-center rounded-full bg-secondary1">
+                <input type="email" placeholder="Enter your email" class="w-full py-2 md:py-3 px-4 sm:px-6 border-none text-nt40 placeholder:text-nt30" />
+                <button type="submit" class="bg-primary uppercase z-10 text-base font-medium py-2 md:py-3 lg:py-3.5 px-4 sm:px-6 !text-nt30 rounded-full">Subscribe</button>
+              </div>
+            </form>
+          </div>
+          <div class="col-span-12 md:col-span-6 lg:col-span-3">
+            <div class="lg:flex lg:flex-col lg:items-end">
+              <h3 class="text-primary font-Oswald mb-4 md:mb-6">Stay Connected</h3>
+              <ul class="flex items-center gap-4">
+                <li class="group duration-300">
+                  <a href="javascript:void(0)" class="border border-primary p-2 rounded-full d-center hover:bg-primary duration-300">
+                    <i class="ph-light ph-instagram-logo fs-three font-normal text-primary group-hover:text-nt30 duration-300"></i>
+                  </a>
+                </li>
+                <li class="group duration-300">
+                  <a href="javascript:void(0)" class="border border-primary p-2 rounded-full d-center hover:bg-primary duration-300">
+                    <i class="ph-light ph-facebook-logo fs-three font-normal text-primary group-hover:text-nt30 duration-300"></i>
+                  </a>
+                </li>
+                <li class="group duration-300">
+                  <a href="javascript:void(0)" class="border border-primary p-2 rounded-full d-center hover:bg-primary duration-300">
+                    <i class="ph-light ph-linkedin-logo fs-three font-normal text-primary group-hover:text-nt30 duration-300"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="p-4 lg:p-6 text-center">
+          <span class="text-nt20">&copy;2026 Lifestyle Reset. All rights reserved</span>
+        </div>
+      </div>
+    </footer>
+    <!-- <========= Footer Section Ends ============> -->

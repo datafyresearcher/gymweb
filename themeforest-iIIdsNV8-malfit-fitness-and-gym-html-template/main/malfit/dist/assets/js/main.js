@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const heightInput = form.querySelector("[data-bmi-height]");
     const weightInput = form.querySelector("[data-bmi-weight]");
     const resultOutput = form
-      .closest(".grid")
+      .closest("[data-bmi-section]")
       ?.querySelector("[data-bmi-result]");
 
     if (!heightInput || !weightInput || !resultOutput) {
@@ -237,6 +237,78 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       resultOutput.textContent = `${bmi.toFixed(1)} (${category})`;
+    });
+  });
+
+  document.querySelectorAll("[data-schedule-tabs]").forEach((tabGroup) => {
+    const tabs = tabGroup.querySelectorAll("[data-schedule-tab]");
+
+    const setActiveTab = (activeTab) => {
+      tabs.forEach((tab) => {
+        const isActive = tab === activeTab;
+        tab.classList.toggle("bg-primary", isActive);
+        tab.classList.toggle("text-nt30", true);
+        tab.classList.toggle("bg-white", !isActive);
+      });
+    };
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        setActiveTab(tab);
+      });
+    });
+  });
+
+  document.querySelectorAll("[data-contact-form]").forEach((form) => {
+    const statusOutput = form.querySelector("[data-contact-status]");
+    const submitButton = form.querySelector("[data-contact-submit]");
+
+    if (!statusOutput || !submitButton) {
+      return;
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+      const payload = {
+        name: String(formData.get("name") || "").trim(),
+        email: String(formData.get("email") || "").trim(),
+        phone: String(formData.get("phone") || "").trim(),
+        message: String(formData.get("message") || "").trim(),
+      };
+
+      if (!payload.name || !payload.email || !payload.phone || !payload.message) {
+        statusOutput.textContent = "Please fill in all fields before submitting.";
+        return;
+      }
+
+      submitButton.disabled = true;
+      statusOutput.textContent = "Sending your request...";
+
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.message || "Unable to send your request right now.");
+        }
+
+        form.reset();
+        statusOutput.textContent = "Thanks! Your joining request has been sent successfully.";
+      } catch (error) {
+        statusOutput.textContent =
+          error instanceof Error ? error.message : "Something went wrong. Please try again.";
+      } finally {
+        submitButton.disabled = false;
+      }
     });
   });
 });
