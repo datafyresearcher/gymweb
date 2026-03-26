@@ -312,6 +312,122 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  document.querySelectorAll("[data-blog-comment-form]").forEach((form) => {
+    const commentSection = document.querySelector("[data-blog-comments]");
+    const commentList = commentSection?.querySelector("[data-blog-comment-list]");
+    const commentCount = commentSection?.querySelector("[data-blog-comment-count]");
+    const statusOutput = form.querySelector("[data-blog-comment-status]");
+    const submitButton = form.querySelector("[data-blog-comment-submit]");
+    const staticCommentItems = commentSection?.querySelectorAll("[data-comment-item]") || [];
+    const storageKey = `blog-comments:${window.location.pathname}`;
+
+    if (!commentSection || !commentList || !commentCount || !statusOutput || !submitButton) {
+      return;
+    }
+
+    const formatDisplayDate = (dateValue) => {
+      const parsed = new Date(dateValue);
+      if (Number.isNaN(parsed.getTime())) {
+        return "March 26, 2026";
+      }
+
+      return parsed.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+    };
+
+    const escapeHtml = (value) =>
+      String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+
+    const createCommentMarkup = (comment) => {
+      const safeName = escapeHtml(comment.name);
+      const safeText = escapeHtml(comment.comment);
+      const safeDate = escapeHtml(formatDisplayDate(comment.date));
+
+      return `
+        <div class="bg-nt10 p-4 lg:p-6 flex max-lg:flex-wrap gap-3 md:gap-6 rounded-xl zoomin mb-4 lg:mb-6">
+          <div class="rounded-md w-[100px] h-[100px] md:w-[150px] md:h-[150px] bg-secondary1 flex items-center justify-center shrink-0">
+            <span class="text-nt30 font-Oswald fs-five">${safeName.charAt(0) || "G"}</span>
+          </div>
+          <div>
+            <a href="javascript:void(0)" class="fs-five font-medium text-nt30 mb-1">${safeName}</a>
+            <span class="mb-2 lg:mb-3">(${safeDate})</span>
+            <p class="mb-3 lg:mb-4">${safeText}</p>
+            <div>
+              <button type="button" class="bg-primary flex items-center gap-2 py-2 px-3">
+                <span class="d-center">
+                  <i class="ph ph-arrow-bend-up-left text-nt30 max-lg:text-[20px]"></i>
+                </span>
+                <span class="font-normal text-nt30 max-lg:text-[14px]">Reply</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    };
+
+    const loadStoredComments = () => {
+      try {
+        const raw = window.localStorage.getItem(storageKey);
+        const parsed = raw ? JSON.parse(raw) : [];
+        if (!Array.isArray(parsed)) {
+          return [];
+        }
+
+        return parsed.filter((comment) => {
+          const normalizedName = String(comment?.name || "").trim().toLowerCase();
+          return normalizedName !== "rizwan";
+        });
+      } catch {
+        return [];
+      }
+    };
+
+    const saveStoredComments = (comments) => {
+      window.localStorage.setItem(storageKey, JSON.stringify(comments));
+    };
+
+    const renderStoredComments = () => {
+      const storedComments = loadStoredComments();
+      commentList.innerHTML = storedComments.map(createCommentMarkup).join("");
+      commentCount.textContent = `(${staticCommentItems.length + storedComments.length})`;
+    };
+
+    renderStoredComments();
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+      const payload = {
+        name: String(formData.get("name") || "").trim(),
+        email: String(formData.get("email") || "").trim(),
+        comment: String(formData.get("comment") || "").trim(),
+        date: "2026-03-26",
+      };
+
+      if (!payload.name || !payload.email || !payload.comment) {
+        statusOutput.textContent = "Please fill in your name, email, and comment.";
+        return;
+      }
+
+      const storedComments = loadStoredComments();
+      storedComments.unshift(payload);
+      saveStoredComments(storedComments);
+      renderStoredComments();
+
+      form.reset();
+      statusOutput.textContent = "Thanks! Your comment has been added.";
+    });
+  });
+
   function initializeChatWidget() {
     if (document.body?.dataset.chatWidgetReady === "true") {
       return;

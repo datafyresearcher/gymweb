@@ -12,6 +12,7 @@ const htmlFiles = [
   "home",
   "home-four",
   "about",
+  "martial-arts",
   "services",
   "services-details",
   "blogs",
