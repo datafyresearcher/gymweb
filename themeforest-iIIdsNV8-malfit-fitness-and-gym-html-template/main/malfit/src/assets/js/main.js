@@ -1,6 +1,13 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
+  const preloader = document.getElementById("preloader");
+  if (preloader) {
+    window.setTimeout(() => {
+      preloader.remove();
+    }, 1200);
+  }
+
   const menu = document.querySelector(".menu");
   const menuInner = menu?.querySelector(".menu-inner");
   const menuArrow = menu?.querySelector(".menu-arrow");
