@@ -1,16 +1,31 @@
 "use strict";
 document.addEventListener("DOMContentLoaded", function () {
     $(function ($) {
+        const initializeAos = () => {
+            if (window.__lrAosInitialized || typeof AOS === "undefined") {
+                return;
+            }
+
+            window.__lrAosInitialized = true;
+            AOS.init({
+                once: true,
+            });
+        };
+
         // <========= Preloader Starts ============>
         $(window).on('load', function () {
-            setTimeout(function () {
-                $('#preloader').fadeOut('slow', function () {
-                    $(this).remove();
-                    AOS.init({
-                        once: true,
+            const $preloader = $('#preloader');
+
+            if ($preloader.length) {
+                setTimeout(function () {
+                    $preloader.fadeOut('slow', function () {
+                        $(this).remove();
+                        initializeAos();
                     });
-                });
-            }, 1500);
+                }, 1500);
+            } else {
+                initializeAos();
+            }
         });
         // <========= Preloader Ends ============>
         // <========= Aos Animation ============>
@@ -51,9 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "data-aos": "flip-right",
                 "data-aos-duration": "1500"
             });
-            // AOS.init({
-            //     once: true,
-            // });
+            initializeAos();
         });
         // <========= Aos Animation ============>
         // <========= PopUp video starts ============>
