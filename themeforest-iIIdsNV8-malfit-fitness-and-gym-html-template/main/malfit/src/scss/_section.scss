@@ -143,24 +143,13 @@ img {
 	order: 1;
 	display: inline-flex;
 	align-items: center;
-	gap: 0.75rem;
 	min-width: 0;
 
 	&__mark {
 		display: block;
-		width: 56px;
-		height: 56px;
-		object-fit: contain;
+		width: auto;
+		height: 58px;
 		flex: 0 0 auto;
-	}
-
-	&__text {
-		display: block;
-		font-family: Oswald, serif;
-		font-weight: 700;
-		letter-spacing: 0.04em;
-		line-height: 1;
-		white-space: nowrap;
 	}
 }
 
@@ -241,31 +230,20 @@ img {
 
 @media only screen and (max-width: 640px) {
 	.brand {
-		gap: 0.35rem;
 		flex: 1 1 auto;
 		min-width: 0;
 	}
 
 	.brand__mark {
-		width: 36px;
-		height: 36px;
-	}
-
-	.brand__text {
-		font-size: 1.05rem;
-		letter-spacing: 0.02em;
-		overflow: hidden;
-		text-overflow: ellipsis;
+		height: 42px;
+		max-width: min(42vw, 170px);
 	}
 }
 
 @media only screen and (max-width: 480px) {
-	.brand {
-		flex: 0 1 auto;
-	}
-
-	.brand__text {
-		display: none;
+	.brand__mark {
+		height: 36px;
+		max-width: 135px;
 	}
 
 	.navbar-left {
