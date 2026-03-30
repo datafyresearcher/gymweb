@@ -2,3 +2,7 @@ node_modules
 *.lock
 *.DS_Store
 .vercel
+.env
+.env.*
+!.env.example
+run-dist-*.cmd

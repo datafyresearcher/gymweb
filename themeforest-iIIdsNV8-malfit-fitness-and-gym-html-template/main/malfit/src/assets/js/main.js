@@ -728,7 +728,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const seedAssistantMessage =
-      "Hi, I’m the Lifestyle Reset assistant. I can help with classes, memberships, location, contact details, and joining guidance.";
+      "Hi, I'm the Lifestyle Reset assistant. I can help with classes, memberships, location, contact details, and joining guidance.";
     appendMessage("assistant", seedAssistantMessage);
     conversation.push({ role: "assistant", content: seedAssistantMessage });
 
@@ -764,7 +764,7 @@ document.addEventListener("DOMContentLoaded", () => {
           throw new Error(result.message || "The assistant is unavailable right now.");
         }
 
-        const reply = String(result.message || "").trim() || "I’m here to help. Please try asking that another way.";
+        const reply = String(result.message || "").trim() || "I'm here to help. Please try asking that another way.";
         appendMessage("assistant", reply);
         conversation.push({ role: "assistant", content: reply });
         statusOutput.textContent = "";

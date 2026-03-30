@@ -1,32 +1,45 @@
+const { buildKnowledgePrompt, answerFromKnowledge } = require("./chat-knowledge");
+
 function sanitizeText(value, limit = 2000) {
   return String(value || "").trim().replace(/\s+/g, " ").slice(0, limit);
 }
 
-function getOutputText(response) {
-  if (typeof response?.output_text === "string" && response.output_text.trim()) {
-    return response.output_text.trim();
+function getOpenRouterText(result) {
+  const content = result?.choices?.[0]?.message?.content;
+
+  if (typeof content === "string") {
+    return content.trim();
   }
 
-  const output = Array.isArray(response?.output) ? response.output : [];
-  const textParts = [];
+  if (Array.isArray(content)) {
+    return content
+      .map((item) => (typeof item?.text === "string" ? item.text : ""))
+      .join("\n")
+      .trim();
+  }
 
-  output.forEach((item) => {
-    if (!Array.isArray(item?.content)) {
-      return;
-    }
-
-    item.content.forEach((contentItem) => {
-      if (contentItem?.type === "output_text" && typeof contentItem.text === "string") {
-        textParts.push(contentItem.text);
-      }
-    });
-  });
-
-  return textParts.join("\n").trim();
+  return "";
 }
 
-function supportsReasoning(model) {
-  return /^gpt-5/i.test(String(model || "").trim());
+async function requestOpenRouterChat({ apiKey, siteUrl, siteTitle, model, messages }) {
+  const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${apiKey}`,
+      "HTTP-Referer": siteUrl,
+      "X-Title": siteTitle,
+    },
+    body: JSON.stringify({
+      model,
+      messages,
+      temperature: 0.2,
+      max_tokens: 350,
+    }),
+  });
+
+  const result = await response.json();
+  return { response, result };
 }
 
 module.exports = async (req, res) => {
@@ -34,19 +47,10 @@ module.exports = async (req, res) => {
     return res.status(405).json({ message: "Method not allowed." });
   }
 
-  const apiKey = process.env.OPENAI_API_KEY;
-  const model = process.env.OPENAI_MODEL || "gpt-5.2";
-
-  if (!apiKey) {
-    return res.status(500).json({
-      message: "Chatbot is not configured yet. Please add OPENAI_API_KEY in Vercel.",
-    });
-  }
-
   const message = sanitizeText(req.body?.message, 800);
   const rawHistory = Array.isArray(req.body?.history) ? req.body.history : [];
   const history = rawHistory
-    .slice(-12)
+    .slice(-10)
     .map((item) => ({
       role: item?.role === "assistant" ? "assistant" : "user",
       content: sanitizeText(item?.content, 800),
@@ -57,23 +61,36 @@ module.exports = async (req, res) => {
     return res.status(400).json({ message: "Please provide a chat message." });
   }
 
-  const businessContext = [
-    "You are the Lifestyle Reset website assistant for a gym in Lahore, Pakistan.",
-    "Business name: Lifestyle Reset.",
-    "Address: 6th Avenue Commercial Plaza, LDA Avenue-01, 2nd Floor, Raiwind Rd, Lahore.",
-    "Phone: 0323-4222747.",
-    "Email: lifestylereset747@gmail.com.",
-    "Opening hours: Monday-Friday 9 AM - 8 PM. Saturday-Sunday 10 AM - 4 PM.",
-    "Programs mentioned on the website include gym training, strength, HIIT class, CrossFit, yoga, pilates, cardio, and nutrition coaching.",
-    "Primary goal: help visitors understand the gym, encourage them to contact or join, and answer only with information supported by the provided context.",
-    "If the website does not provide a specific answer, say so plainly and suggest contacting the gym by phone or email.",
-    "Keep replies concise, friendly, and practical. Avoid making up prices, schedules, trainer biographies, or policies.",
-  ].join(" ");
+  const fallbackReply = answerFromKnowledge(message);
+  const apiKey = process.env.OPENROUTER_API_KEY;
+  const model =
+    process.env.OPENROUTER_MODEL || "qwen/qwen3-next-80b-a3b-instruct:free";
+  const fallbackModel = process.env.OPENROUTER_FALLBACK_MODEL || "openrouter/free";
+  const siteUrl =
+    process.env.OPENROUTER_SITE_URL || "https://www.lifestylereset.com.pk";
+  const siteTitle = process.env.OPENROUTER_SITE_TITLE || "Lifestyle Reset";
 
-  const input = [
+  const systemPrompt = [
+    "You are the Lifestyle Reset website assistant for a gym in Lahore, Pakistan.",
+    "Answer only with details supported by the verified website context provided to you.",
+    "Be friendly, concise, and practical.",
+    "Do not invent schedules, policies, offers, class slots, trainer credentials, or pricing details.",
+    "If the website information is missing or pricing appears inconsistent, say that clearly and suggest confirming by phone at 0323-4222747 or by email at lifestylereset747@gmail.com.",
+    buildKnowledgePrompt(message),
+  ].join("\n\n");
+
+  if (!apiKey) {
+    return res.status(200).json({
+      message: fallbackReply,
+      provider: "demo",
+      model: "knowledge-base-demo",
+    });
+  }
+
+  const messages = [
     {
-      role: "developer",
-      content: businessContext,
+      role: "system",
+      content: systemPrompt,
     },
     ...history.map((item) => ({
       role: item.role,
@@ -86,47 +103,74 @@ module.exports = async (req, res) => {
   ];
 
   try {
-    const requestBody = {
-      model,
-      input,
-    };
-
-    if (supportsReasoning(model)) {
-      requestBody.reasoning = { effort: "low" };
-    }
-
-    const response = await fetch("https://api.openai.com/v1/responses", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify(requestBody),
+    const attemptedModels = [];
+    let activeModel = model;
+    let { response, result } = await requestOpenRouterChat({
+      apiKey,
+      siteUrl,
+      siteTitle,
+      model: activeModel,
+      messages,
     });
+    attemptedModels.push(activeModel);
 
-    const result = await response.json();
+    const shouldRetryWithFallback =
+      !response.ok &&
+      fallbackModel &&
+      fallbackModel !== activeModel &&
+      [429, 502, 503, 504].includes(response.status);
+
+    if (shouldRetryWithFallback) {
+      activeModel = fallbackModel;
+      ({ response, result } = await requestOpenRouterChat({
+        apiKey,
+        siteUrl,
+        siteTitle,
+        model: activeModel,
+        messages,
+      }));
+      attemptedModels.push(activeModel);
+    }
 
     if (!response.ok) {
-      const apiMessage =
-        result?.error?.message || "We could not get a chatbot response right now.";
-      return res.status(response.status).json({ message: apiMessage });
-    }
-
-    const reply = getOutputText(result);
-
-    if (!reply) {
-      return res.status(500).json({
-        message: "The chatbot returned an empty response. Please try again.",
+      return res.status(200).json({
+        message: fallbackReply,
+        provider: "demo",
+        model: "knowledge-base-demo",
+        warning:
+          result?.error?.message ||
+          "OpenRouter is unavailable right now, so demo knowledge mode was used.",
+        attemptedModels,
       });
     }
 
-    return res.status(200).json({ message: reply });
+    const reply = getOpenRouterText(result);
+
+    if (!reply) {
+      return res.status(200).json({
+        message: fallbackReply,
+        provider: "demo",
+        model: "knowledge-base-demo",
+        warning: "OpenRouter returned an empty reply, so demo knowledge mode was used.",
+        attemptedModels,
+      });
+    }
+
+    return res.status(200).json({
+      message: reply,
+      provider: "openrouter",
+      model: activeModel,
+      attemptedModels,
+    });
   } catch (error) {
-    return res.status(500).json({
-      message:
+    return res.status(200).json({
+      message: fallbackReply,
+      provider: "demo",
+      model: "knowledge-base-demo",
+      warning:
         error instanceof Error
           ? error.message
-          : "The chatbot is temporarily unavailable. Please try again later.",
+          : "OpenRouter is temporarily unavailable, so demo knowledge mode was used.",
     });
   }
 };
