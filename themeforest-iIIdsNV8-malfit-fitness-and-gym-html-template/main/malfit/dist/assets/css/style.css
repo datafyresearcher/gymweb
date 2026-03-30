@@ -2669,6 +2669,7 @@ img {
   order: 1;
   display: inline-flex;
   align-items: center;
+  gap: 0.75rem;
   min-width: 0;
   flex-shrink: 0;
 }
@@ -2680,6 +2681,17 @@ img {
   flex: 0 0 auto;
   -o-object-fit: contain;
      object-fit: contain;
+}
+.brand__text {
+  display: inline-block;
+  font-family: "Oswald", serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: inherit;
 }
 
 .navbar {
@@ -2760,6 +2772,10 @@ img {
     height: 54px;
     max-width: min(40vw, 150px);
   }
+  .brand__text {
+    font-size: 1.05rem;
+    letter-spacing: 0.06em;
+  }
   .burger {
     margin-right: 0;
     flex: 0 0 auto;
@@ -2769,6 +2785,9 @@ img {
   .brand__mark {
     height: 50px;
     max-width: 128px;
+  }
+  .brand__text {
+    font-size: 0.95rem;
   }
   .navbar-left {
     gap: 0.35rem;
