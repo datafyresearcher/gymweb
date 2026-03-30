@@ -141,6 +141,27 @@ img {
 .brand {
 	text-transform: uppercase;
 	order: 1;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.75rem;
+	min-width: 0;
+
+	&__mark {
+		display: block;
+		width: 56px;
+		height: 56px;
+		object-fit: contain;
+		flex: 0 0 auto;
+	}
+
+	&__text {
+		display: block;
+		font-family: Oswald, serif;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		line-height: 1;
+		white-space: nowrap;
+	}
 }
 
 .navbar {
@@ -188,6 +209,40 @@ img {
 			order: 3;
 			align-items: center;
 		}
+	}
+
+	@media only screen and (max-width: 640px) {
+		gap: 0.75rem;
+
+		&-left {
+			gap: 0.75rem;
+			min-width: 0;
+		}
+
+		&-right .btnextra {
+			padding-inline: 1rem;
+			font-size: 0.9rem;
+		}
+	}
+}
+
+@media only screen and (max-width: 640px) {
+	.brand {
+		gap: 0.5rem;
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+
+	.brand__mark {
+		width: 42px;
+		height: 42px;
+	}
+
+	.brand__text {
+		font-size: 1.3rem;
+		letter-spacing: 0.03em;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 }
 
