@@ -226,7 +226,7 @@ img {
 		}
 
 		&-right .btnextra {
-			display: inline-flex;
+			display: none;
 			align-items: center;
 			padding-inline: 0.9rem;
 			font-size: 0.8rem;
@@ -244,7 +244,7 @@ img {
 
 	.brand__mark {
 		height: 54px;
-		max-width: min(34vw, 130px);
+		max-width: min(40vw, 150px);
 	}
 
 	.burger {
@@ -255,17 +255,12 @@ img {
 
 @media only screen and (max-width: 480px) {
 	.brand__mark {
-		height: 48px;
-		max-width: 110px;
+		height: 50px;
+		max-width: 128px;
 	}
 
 	.navbar-left {
 		gap: 0.35rem;
-	}
-
-	.navbar-right .btnextra {
-		padding-inline: 0.75rem;
-		font-size: 0.76rem;
 	}
 }
 
