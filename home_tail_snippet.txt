@@ -126,7 +126,7 @@
               </thead>
               <tbody class="bg-white text-nt30">
                 <tr><td class="py-4 border border-nt30 font-Oswald">Under 18.5</td><td class="py-4 border border-nt30 font-Oswald">Underweight</td></tr>
-                <tr><td class="py-4 border border-nt30 font-Oswald">25 - 29.9</td><td class="py-4 border border-nt30 font-Oswald">Normal weight</td></tr>
+                <tr><td class="py-4 border border-nt30 font-Oswald">18.5 - 24.9</td><td class="py-4 border border-nt30 font-Oswald">Normal weight</td></tr>
                 <tr><td class="py-4 border border-nt30 font-Oswald">25 - 29.9</td><td class="py-4 border border-nt30 font-Oswald">Overweight</td></tr>
                 <tr><td class="py-4 border border-nt30 font-Oswald">30 - 34.9</td><td class="py-4 border border-nt30 font-Oswald">Obese</td></tr>
               </tbody>
