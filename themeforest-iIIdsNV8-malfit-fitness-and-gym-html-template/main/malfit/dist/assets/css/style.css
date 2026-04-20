@@ -1526,6 +1526,9 @@ input:focus,
 .w-full{
   width: 100%;
 }
+.min-w-0{
+  min-width: 0px;
+}
 .max-w-\[720px\]{
   max-width: 720px;
 }
@@ -1534,6 +1537,9 @@ input:focus,
 }
 .max-w-full{
   max-width: 100%;
+}
+.flex-1{
+  flex: 1 1 0%;
 }
 .shrink-0{
   flex-shrink: 0;
@@ -1695,6 +1701,9 @@ input:focus,
 }
 .text-nowrap{
   text-wrap: nowrap;
+}
+.break-words{
+  word-wrap: break-word;
 }
 .\!rounded-none{
   border-radius: 0px !important;
@@ -2121,6 +2130,9 @@ input:focus,
 }
 .leading-none{
   line-height: 1;
+}
+.leading-snug{
+  line-height: 1.375;
 }
 .tracking-\[0\.08em\]{
   letter-spacing: 0.08em;
