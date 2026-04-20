@@ -965,6 +965,7 @@ img {
 	> div {
 		flex: 1 1 auto;
 		min-width: 0;
+		width: 100%;
 	}
 
 	.text-nt20,
@@ -974,8 +975,9 @@ img {
 
 	.text-nt10 {
 		max-width: 100%;
-		overflow-wrap: anywhere;
-		word-break: break-word;
+		white-space: normal;
+		overflow-wrap: break-word;
+		word-break: normal;
 	}
 }
 
@@ -1040,6 +1042,8 @@ img {
 	}
 
 	.gym-footer .flex.items-center.gap-2.md\:gap-3 {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
 		align-items: flex-start;
 	}
 
