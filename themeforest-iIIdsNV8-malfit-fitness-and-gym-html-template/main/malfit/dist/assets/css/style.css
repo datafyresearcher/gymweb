@@ -2453,6 +2453,70 @@ textarea::placeholder {
   word-break: normal;
 }
 
+footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .d-center.items-center.gap-2.md\:gap-3 {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: start;
+  grid-column-gap: 0.75rem;
+  -moz-column-gap: 0.75rem;
+       column-gap: 0.75rem;
+}
+
+footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .flex.d-center.gap-2.md\:gap-3 {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: start;
+  grid-column-gap: 0.75rem;
+  -moz-column-gap: 0.75rem;
+       column-gap: 0.75rem;
+}
+
+footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .d-center.items-center.gap-2.md\:gap-3 span:first-child {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .flex.d-center.gap-2.md\:gap-3 span:first-child {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .d-center.items-center.gap-2.md\:gap-3 > div {
+  min-width: 0;
+  width: 100%;
+}
+
+footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .flex.d-center.gap-2.md\:gap-3 > div {
+  min-width: 0;
+  width: 100%;
+}
+
+footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .d-center.items-center.gap-2.md\:gap-3 .text-nt20,
+footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .d-center.items-center.gap-2.md\:gap-3 .text-nt10 {
+  display: block;
+}
+
+footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .flex.d-center.gap-2.md\:gap-3 .text-nt20,
+footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .flex.d-center.gap-2.md\:gap-3 .text-nt10 {
+  display: block;
+}
+
+footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .d-center.items-center.gap-2.md\:gap-3 .text-nt10 {
+  max-width: 100%;
+  white-space: normal;
+  word-wrap: anywhere;
+  word-break: break-word;
+}
+
+footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .flex.d-center.gap-2.md\:gap-3 .text-nt10 {
+  max-width: 100%;
+  white-space: normal;
+  word-wrap: anywhere;
+  word-break: break-word;
+}
+
 @media only screen and (max-width: 991px) {
   .gym-footer .d-center.items-center.gap-2.md\:gap-3 {
     display: grid;
@@ -2463,6 +2527,16 @@ textarea::placeholder {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     align-items: flex-start;
+  }
+  footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .d-center.items-center.gap-2.md\:gap-3 {
+    grid-template-columns: 24px minmax(0, 1fr);
+    -moz-column-gap: 0.625rem;
+         column-gap: 0.625rem;
+  }
+  footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .flex.d-center.gap-2.md\:gap-3 {
+    grid-template-columns: 24px minmax(0, 1fr);
+    -moz-column-gap: 0.625rem;
+         column-gap: 0.625rem;
   }
 }
 
@@ -3518,6 +3592,43 @@ img {
   word-break: normal;
 }
 
+footer .grid.grid-cols-12 > div {
+  min-width: 0;
+}
+
+footer .col-span-12.sm\:col-span-4.lg\:col-span-3 {
+  min-width: 0;
+  overflow: hidden;
+}
+
+footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .flex.items-center.gap-2.md\:gap-3 {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: start;
+  grid-column-gap: 0.75rem;
+  -moz-column-gap: 0.75rem;
+       column-gap: 0.75rem;
+}
+footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .flex.items-center.gap-2.md\:gap-3 span:first-child {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .flex.items-center.gap-2.md\:gap-3 > div {
+  min-width: 0;
+  width: 100%;
+}
+footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .flex.items-center.gap-2.md\:gap-3 .text-nt20,
+footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .flex.items-center.gap-2.md\:gap-3 .text-nt10 {
+  display: block;
+}
+footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .flex.items-center.gap-2.md\:gap-3 .text-nt10 {
+  max-width: 100%;
+  white-space: normal;
+  word-wrap: anywhere;
+  word-break: break-word;
+}
+
 @media only screen and (max-width: 991px) {
   .gym-nav {
     flex-wrap: wrap;
@@ -3576,6 +3687,18 @@ img {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     align-items: flex-start;
+  }
+  footer .grid.grid-cols-12 {
+    gap: 2rem;
+  }
+  footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .flex.items-center.gap-2.md\:gap-3 {
+    grid-template-columns: 24px minmax(0, 1fr);
+    -moz-column-gap: 0.625rem;
+         column-gap: 0.625rem;
+  }
+  footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .text-nt10 {
+    font-size: 0.95rem;
+    line-height: 1.5rem;
   }
   .gym-frame--accent {
     height: 260px;
