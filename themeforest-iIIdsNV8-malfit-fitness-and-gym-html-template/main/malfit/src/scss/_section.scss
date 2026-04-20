@@ -957,6 +957,28 @@ img {
 	color: rgba(255, 255, 255, 0.56);
 }
 
+.gym-footer .flex.items-center.gap-2.md\:gap-3 {
+	span:first-child {
+		flex: 0 0 auto;
+	}
+
+	> div {
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+
+	.text-nt20,
+	.text-nt10 {
+		display: block;
+	}
+
+	.text-nt10 {
+		max-width: 100%;
+		overflow-wrap: anywhere;
+		word-break: break-word;
+	}
+}
+
 @media only screen and (max-width: 991px) {
 	.gym-nav {
 		flex-wrap: wrap;
@@ -1015,6 +1037,10 @@ img {
 	.gym-frame--main {
 		height: 520px;
 		margin-bottom: 20px;
+	}
+
+	.gym-footer .flex.items-center.gap-2.md\:gap-3 {
+		align-items: flex-start;
 	}
 
 	.gym-frame--accent {
