@@ -988,6 +988,7 @@ footer .grid.grid-cols-12 > div {
 footer .col-span-12.sm\:col-span-4.lg\:col-span-3 {
 	min-width: 0;
 	overflow: hidden;
+	text-align: left;
 }
 
 footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .flex.items-center.gap-2.md\:gap-3 {
@@ -995,6 +996,8 @@ footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .flex.items-center.gap-2.md\:g
 	grid-template-columns: 28px minmax(0, 1fr);
 	align-items: start;
 	column-gap: 0.75rem;
+	justify-items: start;
+	text-align: left;
 
 	span:first-child {
 		display: flex;
@@ -1005,11 +1008,14 @@ footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .flex.items-center.gap-2.md\:g
 	> div {
 		min-width: 0;
 		width: 100%;
+		text-align: left;
 	}
 
 	.text-nt20,
 	.text-nt10 {
 		display: block;
+		width: 100%;
+		text-align: left;
 	}
 
 	.text-nt10 {
@@ -1093,6 +1099,7 @@ footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .flex.items-center.gap-2.md\:g
 	footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .flex.items-center.gap-2.md\:gap-3 {
 		grid-template-columns: 24px minmax(0, 1fr);
 		column-gap: 0.625rem;
+		justify-items: start;
 	}
 
 	footer .col-span-12.sm\:col-span-4.lg\:col-span-3 .text-nt10 {
