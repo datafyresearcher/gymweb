@@ -17,7 +17,8 @@
       .opening-ticker {
         position: relative;
         overflow: hidden;
-        margin: 1.5rem 0 0;
+        z-index: 12;
+        margin: 0 0 1.5rem;
         border: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: 999px;
         background:
@@ -132,7 +133,7 @@
 
       @media (max-width: 767px) {
         .opening-ticker {
-          margin-top: 1rem;
+          margin-bottom: 1rem;
           border-radius: 28px;
         }
 
@@ -221,36 +222,36 @@
       </nav>
     </header>
     <!-- <========= Header section ends ============> -->
-    <div class="container" id="openingTickerWrap">
-      <div class="opening-ticker" role="status" aria-label="Lifestyle Reset opening announcement">
-        <div class="opening-ticker__inner">
-          <div class="opening-ticker__label">
-            <span class="opening-ticker__dot" aria-hidden="true"></span>
-            Opening Soon
-          </div>
-          <div class="opening-ticker__track">
-            <div class="opening-ticker__content">
-              <span>Our Gym Is Opening Soon</span>
-              <span class="opening-ticker__separator">+</span>
-              <span>Grand Opening <strong>1 May 2026</strong></span>
-              <span class="opening-ticker__separator">+</span>
-              <span>Modern Fitness. Premium Coaching. Stronger Community.</span>
-            </div>
-            <div class="opening-ticker__content" aria-hidden="true">
-              <span>Our Gym Is Opening Soon</span>
-              <span class="opening-ticker__separator">+</span>
-              <span>Grand Opening <strong>1 May 2026</strong></span>
-              <span class="opening-ticker__separator">+</span>
-              <span>Modern Fitness. Premium Coaching. Stronger Community.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- <========= Hero section start ============> -->
     <section
       class="pt-16 sm:pt-20 md:pt-24 pb-12 md:pb-16 lg:pb-20 homethereebg">
       <div class="container">
+        <div id="openingTickerWrap">
+          <div class="opening-ticker" role="status" aria-label="Lifestyle Reset opening announcement">
+            <div class="opening-ticker__inner">
+              <div class="opening-ticker__label">
+                <span class="opening-ticker__dot" aria-hidden="true"></span>
+                Opening Soon
+              </div>
+              <div class="opening-ticker__track">
+                <div class="opening-ticker__content">
+                  <span>Our Gym Is Opening Soon</span>
+                  <span class="opening-ticker__separator">+</span>
+                  <span>Grand Opening <strong>1 May 2026</strong></span>
+                  <span class="opening-ticker__separator">+</span>
+                  <span>Modern Fitness. Premium Coaching. Stronger Community.</span>
+                </div>
+                <div class="opening-ticker__content" aria-hidden="true">
+                  <span>Our Gym Is Opening Soon</span>
+                  <span class="opening-ticker__separator">+</span>
+                  <span>Grand Opening <strong>1 May 2026</strong></span>
+                  <span class="opening-ticker__separator">+</span>
+                  <span>Modern Fitness. Premium Coaching. Stronger Community.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div
           class="pt-5 sm:pt-6 md:pt-10 relative mb-6 sm:mb-8 md:mb-12 lg:mb-16 xl:mb-20 zoomin">
           <img
